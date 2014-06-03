@@ -50,6 +50,7 @@ makeCacheMatrix <- function(x = matrix()) {
 #######
 
 cacheSolve <- function(x, ...) {
+
         ## Return a matrix that is the inverse of 'x'
         ## example
         ##
@@ -57,28 +58,30 @@ cacheSolve <- function(x, ...) {
         ## cacheSolve(mx)
         ## 
         ## 			 [,1]       [,2]
-		## [1,] 0.6666667 -0.3333333
-		## [2,] 0.3333333  0.3333333
-		##
-
+        ## [1,] 0.6666667 -0.3333333
+        ## [2,] 0.3333333  0.3333333
+        ##
+        
+        # convert to cachematrix if it is a square matrix 
 		cm <- x
 		if ((class(x) == "matrix") && (nrow(x) == ncol(x))) {
 		        cm <- makeCacheMatrix(x)
 		}
-
+        
+        # retrieve, calculate, and/or store inverse if this is a cachematrix
 		if ((class(cm) == "list") && identical(names(cm), c("set","get","setinverse","getinverse"))) {
-    	        m <- cm$getinverse()
+                m <- cm$getinverse()
                 if(!is.null(m)) {
                         message("getting cached data")
                         return(m)
-        	    }
-        		data <- cm$get()
-        		m <- solve(data, ...)
-        		cm$setinverse(m)
-        		m
+                }
+                data <- cm$get()
+                m <- solve(data, ...)
+                cm$setinverse(m)
+                m
 		} else {
-		        message("call this function with a square matrix or a cachematrix only")
-		        return(matrix())
+                message("Usage: cacheSolve(m) where m is a square matrix or cachematrix")
+                return(matrix())
 		}
 
 }
