@@ -3,6 +3,15 @@
 ## brainvat
 ## https://github.com/brainvat/ProgrammingAssignment2
 ##
+## Reference material:
+##
+## The Inverse of a Square Matrix
+## https://people.richland.edu/james/lecture/m116/matrices/inverses.html
+##
+## Gauss Jordan Elimination Through Pivoting 
+## https://people.richland.edu/james/lecture/m116/matrices/pivot.html
+##
+
 
 #######
 ##
